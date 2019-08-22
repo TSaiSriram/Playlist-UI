@@ -1,5 +1,27 @@
-<div>
-    <p *ngFor="let song of playList">
-        {{song .title}}
-    </p>
+<div class="main">
+    <div fxLayoutAlign="center center">
+        <form class="example-form">
+            <div fxLayout="row" fxLayoutGap="2%" fxLayoutAlign="space-between center">
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Search here or add from here">
+                </mat-form-field>
+                <button mat-raised-button color="warn">Add</button>
+            </div>
+        </form>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="center space-between">
+        <mat-card fxLayout="column">
+            <div *ngFor=" let song of playList">
+                <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="100px">
+                    <div>
+                        <p> 🎵 {{song .title}}</p>
+                    </div>
+                    <div>
+                        <button color="warn" mat-button>Delete</button>
+                    </div>
+                </div>
+            </div>
+        </mat-card>
+    </div>
 </div>
