@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PlayListService } from '../services/play-list.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,20 +8,43 @@ import { PlayListService } from '../services/play-list.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+
   playList = [];
- 
+  songsForm:FormGroup;
+  
   constructor(private playService:PlayListService) { }
 
   ngOnInit() {
 
-    //  this.playService.addList().subscribe(res=>{
-    //     console.log(res)
-    //   })
-   this.playService.getList().subscribe(res=>{
-          res["data"].map(data => this.playList.push(data))
-        })
-     
+    this.songsForm = new FormGroup({
+      title: new FormControl('')
+    })
+
+     this.getSongs()
   }
 
+
+  getSongs(){
+    this.playService.getList().subscribe(res=>{
+      res["data"].map(data => this.playList.push(data))
+    })
+  }
+
+  addSong(songsForm){
+     var body=songsForm.value
+     console.log(body)
+     this.playService.addList(body).subscribe(res=>{
+      this.playList=[];
+      this.getSongs()
+      })
+      
+      this.songsForm = new FormGroup({
+        title: new FormControl('')
+      })
+
+      
+  }
+ 
+ 
 
 }

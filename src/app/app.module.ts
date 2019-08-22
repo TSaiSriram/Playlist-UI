@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PlayListService } from './services/play-list.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
@@ -24,6 +25,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatListModule,
     MatCardModule,
     FlexLayoutModule,

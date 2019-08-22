@@ -14,12 +14,8 @@ export class PlayListService {
 
   constructor(public httpClient: HttpClient) { }
 
-  body={
-    title:"Shoot to thrill"
-  }
-
-  public addList(){
-    return this.httpClient.post(' https://playlist.cfapps.io/addPlaylist',this.body);
+  public addList(body){
+    return this.httpClient.post(' https://playlist.cfapps.io/addPlaylist',body);
     // this.songSubject.next()
   }
 
