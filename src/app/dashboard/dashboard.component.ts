@@ -43,7 +43,20 @@ export class DashboardComponent implements OnInit {
     })
 
 
+
   }
+
+  deleteSong(songId){
+
+    // var body1={
+    // '"id"':songId
+    // }
+    // console.log(body1)
+    this.playService.delList(songId).subscribe(res=>{
+    this.playList=[];
+    this.getSongs();
+    })
+    }
 
 
 

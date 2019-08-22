@@ -7,20 +7,19 @@ import {Subject,BehaviorSubject } from '../../../node_modules/rxjs';
 })
 export class PlayListService {
 
-  songs;
-
-  private songSubject = new BehaviorSubject(this.songs);
-  sampleSong = this.songSubject.asObservable();
-
   constructor(public httpClient: HttpClient) { }
 
   public addList(body){
-    return this.httpClient.post(' https://playlist.cfapps.io/addPlaylist',body);
-    // this.songSubject.next()
+    return this.httpClient.post('https://playlist.cfapps.io/addPlaylist',body);
   }
 
   public getList(){
-    return this.httpClient.get(' https://playlist.cfapps.io/getPlaylist');
+    return this.httpClient.get('https://playlist.cfapps.io/getPlaylist');
   }
+
+ public delList(id){
+   return this.httpClient.delete('https://playlist.cfapps.io/removePlaylist' + "?id=" + `${id}`)
+ }
+
 
 }
