@@ -10,41 +10,41 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class DashboardComponent implements OnInit {
 
   playList = [];
-  songsForm: FormGroup;
-
-  constructor(private playService: PlayListService) { }
+  songsForm:FormGroup;
+  
+  constructor(private playService:PlayListService) { }
 
   ngOnInit() {
 
     this.songsForm = new FormGroup({
       title: new FormControl('')
-    });
+    })
 
-    this.getSongs();
+     this.getSongs()
   }
 
 
-  getSongs() {
-    this.playService.getList().subscribe(res => {
+  getSongs(){
+    this.playService.getList().subscribe(res=>{
       res["data"].map(data => this.playList.push(data))
     })
   }
 
-  addSong(songsForm) {
-    var body = songsForm.value
-    console.log(body)
-    this.playService.addList(body).subscribe(res => {
-      this.playList = [];
+  addSong(songsForm){
+     var body=songsForm.value
+     console.log(body)
+     this.playService.addList(body).subscribe(res=>{
+      this.playList=[];
       this.getSongs()
-    })
+      })
+      
+      this.songsForm = new FormGroup({
+        title: new FormControl('')
+      })
 
-    this.songsForm = new FormGroup({
-      title: new FormControl('')
-    })
-
-
+      
   }
-
-
+ 
+ 
 
 }

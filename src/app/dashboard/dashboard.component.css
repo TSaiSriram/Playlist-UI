@@ -3,7 +3,8 @@
   padding: 2% 10% 2% 10%;
 } */
 
-.main {
+.main,
+mat-card {
   margin-top: 5em;
 }
 
@@ -17,10 +18,4 @@
 
 .example-full-width {
   width: 100%;
-}
-
-.spaces {
-  margin-bottom: 5%;
-  border: 2px groove;
-  line-height: 10px;
 }
