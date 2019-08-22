@@ -1,18 +1,18 @@
-
 <div class="main">
     <div fxLayoutAlign="center center">
-        <form class="example-form"  [formGroup]="songsForm">
+        <form class="example-form" [formGroup]="songsForm">
             <div fxLayout="row" fxLayoutGap="2%" fxLayoutAlign="space-between center">
-                <mat-form-field class="example-full-width" ><input matInput placeholder="Search here or add from here" formControlName="title"> </mat-form-field>
+                <mat-form-field class="example-full-width"><input matInput placeholder="Search here or add from here"
+                        formControlName="title"> </mat-form-field>
                 <button mat-raised-button color="warn" (click)="addSong(songsForm)">Add</button>
             </div>
         </form>
     </div>
 
     <div fxLayout="row" fxLayoutAlign="center space-between">
-        <mat-card fxLayout="column">
+        <div fxLayout="column" class="matcard">
             <div *ngFor=" let song of playList">
-                <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="100px">
+                <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="100px" class="spaces">
                     <div>
                         <p> 🎵 {{song .title}}</p>
                     </div>
@@ -21,6 +21,6 @@
                     </div>
                 </div>
             </div>
-        </mat-card>
+        </div>
     </div>
 </div>
