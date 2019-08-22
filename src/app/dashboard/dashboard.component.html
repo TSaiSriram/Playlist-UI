@@ -9,17 +9,16 @@
         </form>
     </div>
 
-    <div fxLayout="row" fxLayoutAlign="center space-between">
-        <div fxLayout="column" class="matcard">
-            <div *ngFor=" let song of playList">
-                <div fxLayout="row wrap" fxLayoutAlign="space-between center" fxLayoutGap="100px" class="spaces">
-                    <div fxLayout="row wrap">
-                        <p> 🎵 {{song .title}}</p>
-                    </div>
-                    <div>
-                        <button color="warn" mat-button (click)="deleteSong(song._id)">Delete</button>
-                    </div>
+    <div fxLayout="column" fxLayoutAlign="center center">
+        <div *ngFor=" let song of playList" fxLayout="column" class="matcard">
+            <div fxLayout="row" fxLayoutAlign="space-between center" class="spaces">
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <span style="margin-right: 8px"> 🎵 </span>
+                    <span>
+                        <p>{{song .title.substr(0,25)}}</p>
+                    </span>
                 </div>
+                <button color="warn" mat-button (click)="deleteSong(song._id)">Delete</button>
             </div>
         </div>
     </div>
