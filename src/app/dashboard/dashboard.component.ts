@@ -41,23 +41,23 @@ export class DashboardComponent implements OnInit {
     this.songsForm = new FormGroup({
       title: new FormControl('')
     });
-
-
-
   }
 
   deleteSong(songId) {
-
-    // var body1={
-    // '"id"':songId
-    // }
-    // console.log(body1)
-    this.playService.delList(songId).subscribe(res => {
+   this.playService.delList(songId).subscribe(res => {
       this.playList = [];
       this.getSongs();
     });
   }
 
+  title;
 
+  searchSong(){
+    this.playService.searchList(this.title).subscribe(res=>{
+      // console.log(res)
+      this.playList = [];
+      res["data"].map(data => this.playList.push(data));
+    })
+  }
 
 }

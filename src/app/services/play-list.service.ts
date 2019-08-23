@@ -21,5 +21,8 @@ export class PlayListService {
    return this.httpClient.delete('https://playlist.cfapps.io/removePlaylist' + "?id=" + `${id}`)
  }
 
+ public searchList(search){
+   return this.httpClient.get('https://playlist.cfapps.io/searchPlaylist'+"?title="+`${search}`)
+ }
 
 }

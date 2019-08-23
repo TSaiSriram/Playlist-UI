@@ -2,8 +2,10 @@
     <div fxLayoutAlign="center center">
         <form class="example-form" [formGroup]="songsForm">
             <div fxLayout="row" fxLayoutGap="2%" fxLayoutAlign="space-between center">
-                <mat-form-field class="example-full-width"><input matInput placeholder="Search here or add from here"
-                        formControlName="title"> </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Search here or add from here"  [(ngModel)]="title" (keyup)="searchSong()"
+                        formControlName="title"> 
+                    </mat-form-field>
                 <button mat-raised-button color="warn" (click)="addSong(songsForm)">Add</button>
             </div>
         </form>
