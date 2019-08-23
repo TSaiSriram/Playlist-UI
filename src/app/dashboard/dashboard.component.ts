@@ -11,6 +11,7 @@ export class DashboardComponent implements OnInit {
 
   playList = [];
   songsForm: FormGroup;
+  title;
 
   constructor(private playService: PlayListService) { }
 
@@ -26,7 +27,6 @@ export class DashboardComponent implements OnInit {
 
   getSongs() {
     this.playService.getList().subscribe(res => {
-            // res[`data`].map(data => this.playList.push(data.title.map(word => {title += word.charAt(0).toUpperCase() + word.slice(1)+" "})));
       res["data"].map(data => {
         let str = " ";
         data.title.split(" ").map(word => {str += word.charAt(0).toUpperCase() + word.slice(1)+" "})
@@ -57,11 +57,8 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  title;
-
   searchSong(){
     this.playService.searchList(this.title.toLowerCase()).subscribe(res=>{
-      // console.log(res)
       this.playList = [];
       res["data"].map(data => {
         let str = " ";
