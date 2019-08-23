@@ -26,12 +26,19 @@ export class DashboardComponent implements OnInit {
 
   getSongs() {
     this.playService.getList().subscribe(res => {
-      res[`data`].map(data => this.playList.push(data));
+            // res[`data`].map(data => this.playList.push(data.title.map(word => {title += word.charAt(0).toUpperCase() + word.slice(1)+" "})));
+      res["data"].map(data => {
+        let str = " ";
+        data.title.split(" ").map(word => {str += word.charAt(0).toUpperCase() + word.slice(1)+" "})
+        data.title = str;
+        this.playList.push(data)
+      });
     });
   }
 
   addSong(songsForm) {
-    const body = songsForm.value;
+    console.log(songsForm.value.title.toLowerCase())
+    const body =  {title : songsForm.value.title.toLowerCase()}
     console.log(body);
     this.playService.addList(body).subscribe(res => {
       this.playList = [];
@@ -53,10 +60,15 @@ export class DashboardComponent implements OnInit {
   title;
 
   searchSong(){
-    this.playService.searchList(this.title).subscribe(res=>{
+    this.playService.searchList(this.title.toLowerCase()).subscribe(res=>{
       // console.log(res)
       this.playList = [];
-      res["data"].map(data => this.playList.push(data));
+      res["data"].map(data => {
+        let str = " ";
+        data.title.split(" ").map(word => {str += word.charAt(0).toUpperCase() + word.slice(1)+" "})
+        data.title = str;
+        this.playList.push(data)
+      });
     })
   }
 
